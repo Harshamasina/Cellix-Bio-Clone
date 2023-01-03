@@ -206,7 +206,6 @@ router.get('/cbuspatents', async(req, res) => {
 });
 
 
-
 router.get('/contact', async(req, res) => {
     try {
         user.find({}, (err, result) => {
@@ -241,9 +240,12 @@ router.post('/register', async (req, res) => {
         return res.status(422).json({ error: "Please fill all fields" });
     }
     try{
-        const employeeExist = await employees.findOne({ emp_unq_id:emp_unq_id })
+        const employeeExist = await employees.findOne({
+            $or: [{emp_email:emp_email},
+            {emp_unq_id:emp_unq_id} 
+        ]})
         if(employeeExist){
-            return res.status(422).json({ error: "Unique ID Already Exists"});
+            return res.status(422).json({ error: "Account Already Exists"});
         } else if (emp_password != emp_cpassword) {
             return res.status(422).json({error: "Passwords does not match"});
         } else {
@@ -264,7 +266,10 @@ router.post('/login', async(req, res) => {
             return res.status(400).json({error: "Please fill all fields"})
         }
 
-        const empLogin = await employees.findOne({ emp_unq_id:emp_unq_id });
+        const empLogin = await employees.findOne({ 
+            $and: [{emp_email:emp_email},
+                {emp_unq_id:emp_unq_id}  
+        ]});
         // console.log(empLogin);
         if(empLogin){
             const passwordMatch = await bcrypt.compare(emp_password, empLogin.emp_password);
