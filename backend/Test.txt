@@ -1,0 +1,299 @@
+// router.get('/Patents', (req, res) => {
+//     // console.log(req.body);
+//    // res.send(patents.find({}).where('year',2009));
+//    patents.find({year:2009},function(err,docs){
+//     if(err){
+//         console.log(err);
+//     }else{
+//         console.log(docs);
+//     }
+//    })
+//    res.send("hello".json);
+// });
+
+
+// router.post('/Contact', (req, res) => {
+//     const { name, email, phone, subject, message } = req.body;
+//     // console.log(req.body);
+//     // res.json({message: req.body});
+//     // res.send('Message from Contact Page');
+//     if(!name || !email || !phone || !subject || !message){
+//         return res.status(422).json({error: "Please fill all the fields"});
+//     }
+//     User.findOne({email: email})
+//     .then((userExist) => {
+//         if(userExist){
+//             return res.status(422).json({error: "Email already Exists"});
+//         }
+//         const user = new User({name, email, phone, subject, message});
+//         user.save().then(() => {
+//             res.status(201).json({message: "User registered Succesfully"})
+//         }).catch((err) => res.status(500).json({error: "Failed to register"}));
+//     }).catch(err => {console.log(err);});
+// });
+
+
+// router.get('/patents/:wno', async (req, res) => {
+//     try {
+//         const wno = req.params.wno;
+//         await patents.findById(wno, (err,result) => {
+//             res.status(200).send(result);
+//         });
+//      }catch(err){
+//         res.status(500).send(err);
+//      }
+// })
+
+// router.get('/patents/:id', (req, res) => {
+//     const id = req.params.id;
+//     patents.findById(id)
+//     .then((result) => {
+//         res.status(200).send(result);
+//     }).catch((err) => {
+//         res.status(500).send(err);
+//     });
+// });
+
+
+// router.get('/patents', (req,res) => {
+//     patents.find((err,data) => {
+//         if(err){
+//             res.status(500).send(err);
+//         }else{
+//             res.status(200).send(data);
+//         }
+//     })
+// });
+
+
+
+
+<div className='PaginationContainerTop'>
+                <Pagination>
+                    <Pagination.Item active>{1}</Pagination.Item>
+                    <Pagination.Item>{2}</Pagination.Item>
+                    <Pagination.Item>{3}</Pagination.Item>
+                    <Pagination.Item>{4}</Pagination.Item>
+                    <Pagination.Ellipsis />
+                    <Pagination.Item>{8}</Pagination.Item>
+                    <Pagination.Item>{9}</Pagination.Item>
+                    <Pagination.Item disabled>{10}</Pagination.Item>
+                </Pagination>
+            </div>
+
+<div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+            
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+           
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+            
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+            
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+            
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+
+            <div className='CardContainer'>
+                <Card style={{ width: '90rem' }} className = "shadow-lg PatentsCard">
+                    <Card.Body>
+                        <Card.Title><p className='Wno'
+                        onClick={() => navigate('/PatentInfo')}
+                        >US20210380525</p></Card.Title>
+                        <div className='cardTextContainer'>
+                            <div className='cardTextInfoContainer'>
+                                <Card.Text className='CardTextInfo'>
+                                    <p> treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection. treating or preventing Parkinson's disease may be formulated for oral, buccal, rectal, topical, transdermal, transmucosal, intravenous, parenteral administration, subcutaneous, depot, intramuscular, syrup, or injection.</p>
+                                </Card.Text>
+                            </div>
+                            <div className='cardTextDateContainer'>
+                                <Card.Text>
+                                    <p><span className='CardTextSpan'>Publishing Date: </span>09.12.2021</p>
+                                </Card.Text>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+
+            <div className='PaginationContainer'>
+                <Pagination>
+                    <Pagination.First />
+                    <Pagination.Prev />
+                    <Pagination.Item>{1}</Pagination.Item>
+                    <Pagination.Item>{2}</Pagination.Item>
+                    <Pagination.Ellipsis />
+
+                    <Pagination.Item active>{4}</Pagination.Item>
+                    <Pagination.Item>{5}</Pagination.Item>
+                    <Pagination.Item disabled>{6}</Pagination.Item>
+
+                    <Pagination.Ellipsis />
+                    <Pagination.Item>{10}</Pagination.Item>
+                    <Pagination.Next />
+                    <Pagination.Last />
+                </Pagination>
+            </div>

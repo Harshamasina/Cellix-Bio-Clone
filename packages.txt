@@ -1,0 +1,28 @@
+React-router-Dom added on 31st Oct
+
+App>
+    Navbar+Intro+WWD+Patents+TB+Teamwork+Footer
+
+Navbar>Logo>About>contact
+
+Body>
+        Intro>intro.js+background.js
+        WWD
+        Patents>desc.js+years.js
+        TB.js
+        Teamwork.js
+
+Footer>
+        Footer>NOP.js+Social.js
+
+
+
+Installed npm install --save cdbreact   for Footer on 04-Nov'22
+npm install react-icons --save
+
+05-Nov
+Modified Home.js(Adjusted size of the image)
+added mouse icon in home page for future animation
+added main page as home page on Navbar
+added image reference to home page on logo page
+added ModalDialog under Intro
