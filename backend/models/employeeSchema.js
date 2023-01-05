@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const EmployeeSchema = new mongoose.Schema(
     {
@@ -31,6 +32,14 @@ const EmployeeSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        tokens: [
+            {
+                token: {
+                    type: String,
+                    required: true
+                }
+            }
+        ]
     },
     {timestamps: true},
 );
@@ -42,6 +51,18 @@ EmployeeSchema.pre('save', async function (next){
     }
     next();
 });
+
+EmployeeSchema.methods.generateAuthToken = async function(){
+    let SECRET = "CELLIXBIOAVACAPHARMACELLIXBIOPHARMA";
+    try{
+        let token = jwt.sign({_id: this._id}, SECRET);
+        this.tokens = this.tokens.concat({ token: token });
+        await this.save();
+        return token;
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 const employees = mongoose.model('employees', EmployeeSchema);
 module.exports = employees;

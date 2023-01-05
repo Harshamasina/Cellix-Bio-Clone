@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const patents = require('../models/patentSchema');
 const User = require('../models/userSchema');
 const user = require('../models/userSchema');
@@ -260,6 +261,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async(req, res) => {
     try{
+        let token;
         const { emp_unq_id, emp_email, emp_password } = req.body;
         
         if(!emp_unq_id || !emp_email || !emp_password){
@@ -273,6 +275,14 @@ router.post('/login', async(req, res) => {
         // console.log(empLogin);
         if(empLogin){
             const passwordMatch = await bcrypt.compare(emp_password, empLogin.emp_password);
+            token = await empLogin.generateAuthToken();
+            console.log(token);
+            
+            res.cookie("CellixToken", token, {
+                expires: new Date(Date.now() + 1800000),
+                httpOnly: true
+            });
+
             if(!passwordMatch){
                 res.status(400).json({error: "Login Failed! Invalid credentials"});
             } else {

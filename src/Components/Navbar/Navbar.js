@@ -56,10 +56,6 @@ function NavBar() {
                                 {/* <Nav.Link className='navbar_link' as={Link} to="/Media" eventKey="9">Media</Nav.Link>
                                 <Nav.Link className='navbar_link' as={Link} to="/Careers" eventKey="10">CAREERS</Nav.Link>
                                 <Nav.Link className='navbar_link' as={Link} to="/Contact" eventKey="11">Contact</Nav.Link> */}
-                                {/* <NavDropdown className='navbar_link' title="MORE" id="basic-nav-dropdown">
-                                        <NavDropdown.Item className='navbar_link' as={Link} to="/Media" eventKey="10">MEDIA</NavDropdown.Item>
-                                        <NavDropdown.Item className='navbar_link' as={Link} to="/Careers" eventKey="11">CAREERS</NavDropdown.Item>
-                                </NavDropdown> */}
                                 <Nav.Link className='navbar_button' as={Link} to="/Login" eventKey="9">Login / Sign Up</Nav.Link>
                                 {/* <Nav.Link className='navbar_button' as={Link} to="/Register" eventKey="10">Sign Up</Nav.Link> */}
                             </Nav>

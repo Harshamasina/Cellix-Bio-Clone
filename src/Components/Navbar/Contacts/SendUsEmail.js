@@ -9,35 +9,35 @@ function SendUsEmail(){
         phone: "",
         subject: "",
         message: ""
-});
-
-let name, value;
-let handleInputs = (e) => {
-  console.log(e);
-   name=e.target.name;
-   value = e.target.value;
-   setUser({...user, [name]:value});
-};
-
-const PostData = async (e) => {
-    e.preventDefault();
-    const { name, email, phone, subject, message } = user;
-    const res = await fetch("http://localhost:3004/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify({name, email, phone, subject, message})
     });
-    const data = await res.json();
-    if(data.status === 422 || !data ){
-        window.alert("Invalid Form");
-        console.log("Invalid Form");
-    } else {
-      window.alert("Submitted Successfully");
-      console.log("Submitted Successfully");
-  }
-}
+
+    let name, value;
+    let handleInputs = (e) => {
+    console.log(e);
+    name=e.target.name;
+    value = e.target.value;
+    setUser({...user, [name]:value});
+    };
+
+    const PostData = async (e) => {
+        e.preventDefault();
+        const { name, email, phone, subject, message } = user;
+        const res = await fetch("http://localhost:3004/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({name, email, phone, subject, message})
+        });
+        const data = await res.json();
+        if(res.status === 422 || !data ){
+            window.alert("Invalid Form");
+            console.log("Invalid Form");
+        } else {
+        window.alert("Submitted Successfully");
+        console.log("Submitted Successfully");
+        }
+    };
     return(
         <>
             
