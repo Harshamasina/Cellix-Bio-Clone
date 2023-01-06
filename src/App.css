@@ -3474,3 +3474,25 @@ img{
   width: 100px;
   height: 100px;
 }
+
+.ProfileUL{
+  list-style-type: none;
+}
+
+.ProfileULContainer{
+  text-align: center;
+  align-items: center;
+  /* margin-left: 30%; */
+}
+
+.ProfileLI{
+  color: #0E6E59;
+  font-size: large;
+  font-weight: bold;
+  text-align: left;
+}
+
+.ProfileSpan{
+  color: #282c34;
+  font-weight: bold;
+}

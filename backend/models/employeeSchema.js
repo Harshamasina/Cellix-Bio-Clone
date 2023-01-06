@@ -54,7 +54,7 @@ EmployeeSchema.pre('save', async function (next){
 
 EmployeeSchema.methods.generateAuthToken = async function(){
     let SECRET = "CELLIXBIOAVACAPHARMACELLIXBIOPHARMA";
-    try{
+    try {
         let token = jwt.sign({_id: this._id}, SECRET);
         this.tokens = this.tokens.concat({ token: token });
         await this.save();

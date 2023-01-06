@@ -13,7 +13,8 @@ function Compounds({compound}){
                     {
                             CompoundArray.length>=1 ? CompoundArray.map((image) => {
                                 return(
-                                <img className='PatentImages' src={image} alt=""></img>
+                                    <img className='PatentImages' src={image} alt=""></img>
+                                    // <div className="Compoundcon" dangerouslySetInnerHTML={{__html: `<p className="CImage">${image}</p>`}}></div>
                                 )
                             }) : <img width={500} height={450} src="https://cellixbio-assets.s3.ap-south-1.amazonaws.com/Web+Images/CellixBio.DataNotFound.png" alt="aws"></img>
                     }

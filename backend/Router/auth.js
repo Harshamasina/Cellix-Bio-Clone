@@ -9,6 +9,7 @@ const user = require('../models/userSchema');
 const uspatents = require('../models/USPatentsSchema');
 const cbuspatents = require('../models/CBUSPatentsSchema');
 const employees = require('../models/employeeSchema');
+const authenticate = require('../Middleware/authenticate');
 
 router.get('/', (req, res) =>{
     res.send(`Hello World from the Server router js`)
@@ -201,7 +202,7 @@ router.get('/cbuspatents', async(req, res) => {
             cbuspatents.find({}, (err, result) => {
             res.status(200).send(result);
         })
-    } catch(err){
+    } catch (err){
         res.status(500).send(err);
     }
 });
@@ -244,7 +245,7 @@ router.post('/register', async (req, res) => {
         const employeeExist = await employees.findOne({
             $or: [{emp_email:emp_email},
             {emp_unq_id:emp_unq_id} 
-        ]})
+        ]});
         if(employeeExist){
             return res.status(422).json({ error: "Account Already Exists"});
         } else if (emp_password != emp_cpassword) {
@@ -278,7 +279,7 @@ router.post('/login', async(req, res) => {
             token = await empLogin.generateAuthToken();
             console.log(token);
             
-            res.cookie("CellixToken", token, {
+            res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 1800000),
                 httpOnly: true
             });
@@ -294,6 +295,16 @@ router.post('/login', async(req, res) => {
     } catch (err) {
         console.log(err);
     }
-}); 
+});
+
+
+
+router.get('/pipeline', (req, res) => {
+    res.send(`Hello from Pipeline Services`)
+});
+
+router.get('/profile', authenticate, (req, res) => {
+    res.send(req.rootUser);
+});
 
 module.exports = router;

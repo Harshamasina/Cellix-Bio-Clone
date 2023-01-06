@@ -18,13 +18,14 @@ import Media from './Media';
 import Careers from './Careers';
 import Login from '../Body/PipelineWorkFlow/Login';
 import Register from '../Body/PipelineWorkFlow/Register';
+import Profile from '../Body/PipelineWorkFlow/Profile';
 
 function NavBar() {
         const [changeNavbar, setChangeNavbar] = useState(false);
         const changeBackground = () => {
             if(window.scrollY >= 80){
                 setChangeNavbar(true);
-            }else{
+            } else {
                 setChangeNavbar(false);
             }
         }
@@ -56,7 +57,8 @@ function NavBar() {
                                 {/* <Nav.Link className='navbar_link' as={Link} to="/Media" eventKey="9">Media</Nav.Link>
                                 <Nav.Link className='navbar_link' as={Link} to="/Careers" eventKey="10">CAREERS</Nav.Link>
                                 <Nav.Link className='navbar_link' as={Link} to="/Contact" eventKey="11">Contact</Nav.Link> */}
-                                <Nav.Link className='navbar_button' as={Link} to="/Login" eventKey="9">Login / Sign Up</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/Profile" eventKey="9">Profile</Nav.Link>
+                                <Nav.Link className='navbar_button' as={Link} to="/Login" eventKey="10">Employee Login</Nav.Link>
                                 {/* <Nav.Link className='navbar_button' as={Link} to="/Register" eventKey="10">Sign Up</Nav.Link> */}
                             </Nav>
                         </Navbar.Collapse>
@@ -81,6 +83,7 @@ function NavBar() {
                         <Route path='/Cellix_Bio' element={<Home></Home>}></Route>
                         <Route path='/Login' element={<Login></Login>}></Route>
                         <Route path='/Register' element={<Register></Register>}></Route>
+                        <Route path='/Profile' element={<Profile></Profile>}></Route>
                         <Route path='/' element={<Home></Home>}></Route>
                         <Route path='*' element={<Error404/>}></Route>
                     </Routes>

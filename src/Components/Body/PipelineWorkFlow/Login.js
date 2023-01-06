@@ -14,8 +14,8 @@ function Login(){
         const res = await fetch("http://localhost:3004/login", {
             method: "POST",
             headers: {
-            "Content-Type" : "application/json"
-           },
+                "Content-Type" : "application/json"
+            },
            body: JSON.stringify(
                 {
                     emp_unq_id : empId, 
@@ -28,7 +28,7 @@ function Login(){
         if(res.status === 400 || !data){
             window.alert("Invalid Credentials");
         } else {
-            window.alert("Login Successful");
+            // window.alert("Login Successful");
             navigate("/Pipeline");
         }
     }
@@ -47,19 +47,7 @@ function Login(){
                 <form method="POST">
                     <h2 className="SignUph2">Employee / Guest Login</h2>
                     <div className="SignUpcontent">
-                        <div className="input-box">
-                            <label for="unq_ID">
-                                <input
-                                    type="text" 
-                                    name="empid"
-                                    value={empId}
-                                    onChange = {(e) => setEmpId(e.target.value)}
-                                    placeholder="Enter Your unique Employee ID / Guest ID" 
-                                    required>
-                                </input>
-                            </label>
-                        </div>
-                        
+
                         <div className="input-box">
                             <label for="Email">
                                 <input 
@@ -68,6 +56,19 @@ function Login(){
                                     value={email}
                                     onChange = {(e) => setEmail(e.target.value)}
                                     placeholder="Enter Your Email" 
+                                    required>
+                                </input>
+                            </label>
+                        </div>
+
+                        <div className="input-box">
+                            <label for="unq_ID">
+                                <input
+                                    type="text" 
+                                    name="empid"
+                                    value={empId}
+                                    onChange = {(e) => setEmpId(e.target.value)}
+                                    placeholder="Enter Your unique Employee ID / Guest ID" 
                                     required>
                                 </input>
                             </label>
@@ -103,4 +104,5 @@ function Login(){
         </>
     );
 }
+
 export default Login;
