@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -11,6 +11,7 @@ const EmployeeSchema = new mongoose.Schema(
         emp_email: {
             type: String,
             required: true,
+            unique: true
         },
         emp_phone: {
             type: Number,
@@ -19,6 +20,7 @@ const EmployeeSchema = new mongoose.Schema(
         emp_unq_id: {
             type: String,
             required: true,
+            unique: true
         },
         emp_designation: {
             type: String,

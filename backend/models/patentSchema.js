@@ -25,5 +25,6 @@ const patentSchema = new mongoose.Schema({
         type: String
     }
 })
+
 const patents = mongoose.model('patents', patentSchema);
 module.exports = patents;

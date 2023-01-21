@@ -2124,6 +2124,40 @@ span.ClaimsText{
   font-size: 1.2vw;
 }
 
+
+.PatentTableContainer Table{
+  width: 70%;
+  margin-left: 15%;
+  font-size: 1.2vw !important;
+  /* border: 1px solid #15B39D; */
+}
+
+.progress {
+  background: rgba(255,255,255,0.1);
+  justify-content: flex-start;
+  border-radius: 100px !important;
+  /* border-radius: none !important; */
+  align-items: center;
+  position: relative;
+  display: flex;
+  height: 15px !important;
+  width: 300px;
+}
+
+.progress-value1 {
+  animation: load1 4s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  /* background: #15B39D; */
+  background: linear-gradient(to right, #034c3c, #0E6E59 , #15B39D);
+  height: 30px;
+  width: 0;
+}
+
+@keyframes load1 {
+  0% { width: 0; }
+  100% { width: 87%; }
+}
+
 .Ptable{
   width: 65% !important;
   margin-left: 18% !important;
@@ -3188,6 +3222,7 @@ img{
 .CareersDetailsul{
   list-style-type: circle;
   margin-bottom: 0.5%;
+  font-size: 1.2vw;
 }
 
 .CareersDetailsulCP{
@@ -3196,7 +3231,7 @@ img{
 
 .CareersDetailsulspan{
   font-size: large;
-  font-weight: 600;
+  font-weight: 1.2vw;
 }
 
 .CareersDetailsp{

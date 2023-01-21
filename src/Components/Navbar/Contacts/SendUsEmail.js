@@ -95,10 +95,10 @@ function SendUsEmail(){
                         </Form.Group>
                     
                         <Button
-                        onClick={PostData}
-                        variant="outline-dark" 
-                        type="submit" 
-                        className='mt-1 shadow-lg CUForm'>
+                            onClick={PostData}
+                            variant="outline-dark" 
+                            type="submit" 
+                            className='mt-1 shadow-lg CUForm'>
                             SEND MESSAGE
                         </Button>
                     </Form>

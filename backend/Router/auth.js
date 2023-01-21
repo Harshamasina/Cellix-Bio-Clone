@@ -284,7 +284,7 @@ router.post('/login', async(req, res) => {
                 httpOnly: true
             });
 
-            if(!passwordMatch){
+            if (!passwordMatch) {
                 res.status(400).json({error: "Login Failed! Invalid credentials"});
             } else {
                 res.json({message: "Employee Signed In Successfully"});
