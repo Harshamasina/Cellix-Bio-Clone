@@ -13,5 +13,5 @@ const CBUSpatentSchema = new mongoose.Schema({
         type: String 
     }
 })
-const CBUSpatents = mongoose.model('cellixbiouspatents', CBUSpatentSchema);
+const CBUSpatents = mongoose.model('cellixuspatents', CBUSpatentSchema);
 module.exports = CBUSpatents;

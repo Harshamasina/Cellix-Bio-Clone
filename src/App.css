@@ -64,9 +64,28 @@ body{
 
 .FooterUL{
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50%;
+  margin-top: 45%;
+  margin-left: 15% !important;
+}
+
+/* .FooterUL img{
+  width: 170px;
+  height: 60px;
+} */
+
+.FooterUL p{
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+
+.FooterAP{
+  width: 220px;
+  height: 70px;
+}
+
+.FooterCBP{
+  width: 170px;
+  height: 80px;
 }
 
 .FooterIcons{
@@ -87,9 +106,9 @@ body{
 }
 
 .Fimg{
-  width:150px;
-  height: 80px;
-  margin-top: -40px ;
+  width:170px;
+  height: 90px;
+  margin-top: -130px ;
   display: block;
 }
 .text-dark{
@@ -101,18 +120,29 @@ body{
   background-color: #034c3c !important;
   margin-top: 8% !important;
   color: white !important;
-  height: 35vh !important;
+  height: 47vh !important;
   display: flex;
   flex-direction: row;
 }
 
 @media screen and (max-width:600px) {
   .shadow{
-    height: 37vh !important;
+    height: 50vh !important;
     /* position: fixed; */
     z-index: -1;
   }
   .Fimg{
+    width: 100px;
+    height: 60px;
+  }
+  .FooterUL p{
+    font-size: 1rem;
+  }
+  .FooterAP{
+    width: 160px;
+    height: 60px;
+  }
+  .FooterCBP{
     width: 100px;
     height: 60px;
   }
@@ -121,6 +151,7 @@ body{
     /* margin-left: 10%; */
   }
 }
+
 @media screen and (max-width: 600px) {
   .Fdetails {
     font-size: 1.5vh;
@@ -145,13 +176,14 @@ body{
     width: 35vh !important;
     margin-top: 80% !important;
     display: flex !important;
-    margin-left: 50% !important;
+    margin-left: -160% !important;
   }
   .Fimg{
     margin-left: 100% !important;
   }
   
 }
+
 @media screen and (max-width:768px) and (min-width:601px) {
   .Fdetails {
     font-size: 2vh;
@@ -159,7 +191,7 @@ body{
     margin-top: 2% !important;
   } 
   .shadow{
-    height: 35vh !important;
+    height: 55vh !important;
   }
   b.Fdetail {
     font-size: 2vh;
@@ -181,14 +213,26 @@ body{
   }
   .FooterContainerp{
     width: 35vh !important;
-    margin-top: 80% !important;    
+    margin-top: 70% !important;
     display: flex !important;
   }
   .Fimg{
     margin-left: 40%;
-    margin-top: 25%;
+    margin-top: -215%;
+  }
+  .FooterUL p{
+    font-size: 1rem;
+  }
+  .FooterAP{
+    width: 200px;
+    height: 70px;
+  }
+  .FooterCBP{
+    width: 180px;
+    height: 75px;
   }
 }
+
 @media screen and (max-width: 600px) {
   b.Fdetail {
     font-size: 1.5vh;
@@ -2006,6 +2050,15 @@ span.ClaimsText{
 .usPatentTitle{
   text-transform: uppercase;
   text-align: left;
+}
+
+.auto-index{
+  counter-reset: Serial;
+}
+
+.auto-index td:first-child:before{
+  counter-increment: Serial;
+  content: counter(Serial);
 }
 
 /* .......................... */

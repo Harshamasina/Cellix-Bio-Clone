@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 
 function SearchPatents(){
     const [searchPatent, setSearchPatent] = useState();
+    const [searchKey, setSearchKey] = useState();
     const searchHandle = async (e) => {
         let key = e.target.value;
+        setSearchKey(key);
         if(key){
             let result = await fetch(`http://localhost:3004/patents/${key}`);
             result = await result.json()
@@ -18,6 +20,7 @@ function SearchPatents(){
         }
     }
     // console.log(searchPatent);
+    console.log(searchKey);
 
     return(
         <div>
