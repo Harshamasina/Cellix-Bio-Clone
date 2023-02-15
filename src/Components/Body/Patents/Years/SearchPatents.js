@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-// import { TfiSearch } from "react-icons/tfi";
 
 function SearchPatents(){
     const [searchPatent, setSearchPatent] = useState();
@@ -29,8 +28,7 @@ function SearchPatents(){
             </div>
             <div>
                 <div className="SearchPatentContainer">
-                   <input onChange={searchHandle} className="SearchBarPatents" type="search" placeholder="ENTER PATENT APPLICATION NUMBER OR THERAPEUTIC AREA"></input>
-                   {/* <button className="SearchBarButton"><TfiSearch /></button> */}
+                   <input onChange={searchHandle} className="SearchBarPatents" type="search" placeholder="ENTER PATENT APPLICATION NUMBER OR THERAPEUTIC AREA OR PCT/IB****/NUMBER"></input>
                 </div>
                 {/* <div className="PatentsFoundContainer">
                     <p className="searchPatentsp">Search Results : <span className="searchPatentspan">{searchPatent && searchPatent.length}</span></p> 

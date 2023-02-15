@@ -58,6 +58,17 @@ router.get('/patents/years/:year', (req, res) => {
     });
 });
 
+//Search for PCT
+router.get('/patents/pct/:pct', (req, res) => {
+    const pct = req.params.pct;
+    patents.find({ pct: pct})
+    .then((result) => {
+        res.status(200).send(result);
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+});
+
 // router.get('/patents/info/:wno', (req, res) => {
 //     const wno = req.params.wno;
 //     patents.find({ wno:wno })
@@ -73,7 +84,8 @@ router.get('/patents/:search', (req, res) => {
         {$or: [
             {wno: {$regex: search, $options: '$i'}},
             {therapeutic_area: {$regex: search, $options: '$i'}},
-            {diseases: {$regex: search, $options: '$i'}}
+            {diseases: {$regex: search, $options: '$i'}},
+            {pct: {$regex: search, $options: '$i'}}
         ]}
     )
     .then((result) => {
@@ -82,6 +94,47 @@ router.get('/patents/:search', (req, res) => {
         res.status(500).send(err);
     })
 });
+
+// router.get('/patents/search/:search', (req, res) => {
+//     const searchTerms = req.params.search.split('/');
+//     console.log(searchTerms);
+//     patents.find(
+//         {$or: searchTerms.map(term => (
+//             {pct: {$regex: term, $options: '$i'}}
+//         ))}
+//     )
+//     .then((result) => {
+//         res.status(200).send(result);
+//     }).catch((err) => {
+//         res.status(500).send(err);
+//     })
+// });
+
+// router.get('patents/search/:terms', async(req, res) => {
+//     const searchTerms = req.params.terms.split('/');
+//     console.log(searchTerms);
+//     const results = await patents.find({
+//         $or: searchTerms.map(term => ({ pct: {$regex: term, $options: 'i'} }))
+//     });
+//     console.log(results);
+//     res.json(results);
+// });
+
+router.get('/patents/search/:terms', async(req, res) => {
+    const searchTerms = req.params.terms.split(',');
+    console.log(searchTerms);
+    const regexTerms = searchTerms.map(term => new RegExp(term, 'i'));
+    const conditions = regexTerms.map(term => ({
+        $or: [
+            {wno: term},
+            {therapeutic_area: term},
+            {diseases: term},
+            {pct: term}
+        ]
+    }));
+    const results = await patents.find({ $or: conditions });
+    res.send(results);
+})
 
 //Search for Both
 
