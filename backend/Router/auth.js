@@ -80,6 +80,7 @@ router.get('/patents/pct/:pct', (req, res) => {
 //Search for Both
 router.get('/patents/:search', (req, res) => {
     const search = req.params.search;
+    console.log(search);
     patents.find(
         {$or: [
             {wno: {$regex: search, $options: '$i'}},
@@ -120,21 +121,31 @@ router.get('/patents/:search', (req, res) => {
 //     res.json(results);
 // });
 
-router.get('/patents/search/:terms', async(req, res) => {
-    const searchTerms = req.params.terms.split(',');
-    console.log(searchTerms);
-    const regexTerms = searchTerms.map(term => new RegExp(term, 'i'));
-    const conditions = regexTerms.map(term => ({
-        $or: [
-            {wno: term},
-            {therapeutic_area: term},
-            {diseases: term},
-            {pct: term}
-        ]
-    }));
-    const results = await patents.find({ $or: conditions });
-    res.send(results);
-})
+// router.get('/patents/search/:terms', async(req, res) => {
+//     // const searchTerms = req.params.terms.split('/');
+//     const searchPCT = req.params.terms;
+//     console.log(searchTerms);
+//     // const regexTerms = searchPCT.map(term => new RegExp(term, 'i'));
+//     // const conditions = regexTerms.map(term => ({
+//     //     $or: [
+//     //         {wno: term},
+//     //         {therapeutic_area: term},
+//     //         {diseases: term},
+//     //         {pct: term}
+//     //     ]
+//     // }));
+//     const regexTerms = searchPCT(RegExp('i'));
+//     const conditions = regexTerms({
+//         $or:[
+//             {wno: searchPCT},
+//             {therapeutic_area: searchPCT},
+//             {diseases: searchPCT},
+//             {pct: searchPCT}
+//         ]
+//     })
+//     const results = await patents.find({ $or: conditions });
+//     res.send(results);
+// })
 
 //Search for Both
 
