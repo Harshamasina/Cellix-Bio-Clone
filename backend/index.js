@@ -7,8 +7,6 @@ app.use(cors());
 app.use(express.json());
 app.use(require('./Router/auth'));
 // app.use(require('./Router/empauth'));
-const dotenv = require('dotenv');
-dotenv.config();
 
 const middleware = (req,res,next) => {
     console.log(`Hello Middleware`);
