@@ -23,11 +23,11 @@ function SendUsEmail(){
         e.preventDefault();
         const { name, email, phone, subject, message } = user;
         const res = await fetch("http://localhost:3004/contact", {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify({name, email, phone, subject, message})
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({name, email, phone, subject, message})
         });
         const data = await res.json();
         if(res.status === 422 || !data ){

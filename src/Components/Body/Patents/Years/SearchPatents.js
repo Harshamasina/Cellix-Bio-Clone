@@ -10,7 +10,7 @@ function SearchPatents(){
         let key = e.target.value;
         setSearchKey(key);
         if(key){
-            let result = await fetch(`http://localhost:3004/patents/${key.replaceAll("/", "%2F")}`);
+            let result = await fetch(`http://localhost:3004/patents/sort/${key.replaceAll("/", "%2F")}`);
             result = await result.json()
             if(result){
                 setSearchPatent(result);

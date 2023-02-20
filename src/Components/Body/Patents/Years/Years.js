@@ -2,6 +2,58 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import NoInternetConnection from '../../NoInternetConn';
 function Years(){
+    const data = [
+        {
+            id: 1,
+            year: 2023,
+            count: 3
+        },
+        {
+            id: 2,
+            year: 2022,
+            count: 51
+        },
+        {
+            id: 3,
+            year: 2021,
+            count: 68
+        },
+        {
+            id: 4,
+            year: 2020,
+            count: 58
+        },
+        {
+            id: 5,
+            year: 2019,
+            count: 76
+        },
+        {
+            id: 6,
+            year: 2018,
+            count: 30
+        },
+        {
+            id: 7,
+            year: 2017,
+            count: 25
+        },
+        {
+            id: 8,
+            year: 2016,
+            count: 50
+        },
+        {
+            id: 9,
+            year: 2015,
+            count: 88
+        },
+        {
+            id: 10,
+            year: 2014,
+            count: 90
+        }
+    ]
     return(
         <>
             <div className="YearsContainerh2">
@@ -10,92 +62,17 @@ function Years(){
             
             <NoInternetConnection>
                 <div className='yearscontainer'>
-                    {/* <Container className='yearcontainer'> */}
-                        
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2022">2022<p className='yearp'>Patents: 51</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2021">2021<p className='yearp'>Patents: 68</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2020">2020<p className='yearp'>Patents: 58</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2019">2019<p className='yearp'>Patents: 76</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2018">2018<p className='yearp'>Patents: 30</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2017">2017<p className='yearp'>Patents: 25</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2016">2016<p className='yearp'>Patents: 50</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2015">2015<p className='yearp'>Patents: 88</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2014">2014<p className='yearp'>Patents: 90</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                {/* <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2013">2013<p className='yearp'>Patents: 74</p></Link>
-                                        </Button>
-                                </div>        
-                                                    
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2012">2012<p className='yearp'>Patents: 13</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2011">2011<p className='yearp'>Patents: 18</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2010">2010<p className='yearp'>Patents: 1</p></Link>
-                                        </Button>
-                                </div>        
-                            
-                                <div className="YearsButtonContainer">
-                                        <Button className='yearbtn' variant="dark" size="lg">
-                                            <Link className='YearsLinks' to="/PatentsDashboard/2009">2009<p className='yearp'>Patents: 3</p></Link>
-                                        </Button>
-                                </div> */}
-                    {/* </Container> */}
+                    {
+                        data.map((item) => {
+                            return(
+                                <div className="YearsButtonContainer" key={item.id}>
+                                    <Button className='yearbtn' variant="dark" size="lg">
+                                        <Link className='YearsLinks' to={`/PatentsDashboard/${item.year}`}>{item.year}<p className='yearp'>Patents: {item.count}</p></Link>
+                                    </Button>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
             </NoInternetConnection>
         </>

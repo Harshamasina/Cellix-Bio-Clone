@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const moment = require('moment');
 const patents = require('../models/patentSchema');
 const User = require('../models/userSchema');
 const user = require('../models/userSchema');
@@ -58,6 +59,20 @@ router.get('/patents/years/:year', (req, res) => {
     });
 });
 
+router.get('/patents/sort/years/:year', async(req, res) => {
+    try{
+        const year = req.params.year;
+        const yearsPatents = await patents.find({ year: year }).exec();
+        const yearsSortPatents = yearsPatents.sort((a,b) => moment(b.publication_date, 'DD.MM.YYYY').diff(moment(a.publication_date, 'DD.MM.YYYY')));
+        res.status(200).send(yearsSortPatents);
+    } catch (err) {
+        res.status(500).json({
+            error: err,
+            message: "Failed to get the Patents"
+        })
+    }
+});
+
 //Search for PCT
 router.get('/patents/pct/:pct', (req, res) => {
     const pct = req.params.pct;
@@ -68,14 +83,6 @@ router.get('/patents/pct/:pct', (req, res) => {
         res.status(500).send(err);
     });
 });
-
-// router.get('/patents/info/:wno', (req, res) => {
-//     const wno = req.params.wno;
-//     patents.find({ wno:wno })
-//     .then((result) => {
-//         res.status(500).send(result)
-//     })
-// })
 
 //Search for Both
 router.get('/patents/:search', (req, res) => {
@@ -96,74 +103,28 @@ router.get('/patents/:search', (req, res) => {
     })
 });
 
-// router.get('/patents/search/:search', (req, res) => {
-//     const searchTerms = req.params.search.split('/');
-//     console.log(searchTerms);
-//     patents.find(
-//         {$or: searchTerms.map(term => (
-//             {pct: {$regex: term, $options: '$i'}}
-//         ))}
-//     )
-//     .then((result) => {
-//         res.status(200).send(result);
-//     }).catch((err) => {
-//         res.status(500).send(err);
-//     })
-// });
+router.get('/patents/sort/:search', async(req, res) => {
+    try{
+        const search = req.params.search;
+        const patentsData = await patents.find(
+            {$or: [
+                {wno: {$regex: search, $options: '$i'}},
+                {therapeutic_area: {$regex: search, $options: '$i'}},
+                {diseases: {$regex: search, $options: '$i'}},
+                {pct: {$regex: search, $options: '$i'}}
+            ]}
+        ).exec();
+        const PatentsSortData = patentsData.sort((a,b) => moment(b.publication_date, 'DD.MM.YYYY').diff(moment(a.publication_date, 'DD.MM.YYYY')));
+        res.status(200).send(PatentsSortData);
+    } catch (err) {
+        res.status(500).json({
+            error: err,
+            message: "Failed to get the Patents"
+        })
+    }
+});
 
-// router.get('patents/search/:terms', async(req, res) => {
-//     const searchTerms = req.params.terms.split('/');
-//     console.log(searchTerms);
-//     const results = await patents.find({
-//         $or: searchTerms.map(term => ({ pct: {$regex: term, $options: 'i'} }))
-//     });
-//     console.log(results);
-//     res.json(results);
-// });
 
-// router.get('/patents/search/:terms', async(req, res) => {
-//     // const searchTerms = req.params.terms.split('/');
-//     const searchPCT = req.params.terms;
-//     console.log(searchTerms);
-//     // const regexTerms = searchPCT.map(term => new RegExp(term, 'i'));
-//     // const conditions = regexTerms.map(term => ({
-//     //     $or: [
-//     //         {wno: term},
-//     //         {therapeutic_area: term},
-//     //         {diseases: term},
-//     //         {pct: term}
-//     //     ]
-//     // }));
-//     const regexTerms = searchPCT(RegExp('i'));
-//     const conditions = regexTerms({
-//         $or:[
-//             {wno: searchPCT},
-//             {therapeutic_area: searchPCT},
-//             {diseases: searchPCT},
-//             {pct: searchPCT}
-//         ]
-//     })
-//     const results = await patents.find({ $or: conditions });
-//     res.send(results);
-// })
-
-//Search for Both
-
-// router.get('/patents/:search', async(req, res) => {
-//     let data = await patents.find(
-//         {
-//             "$or": [
-//                 { "wno": {$regex:req.params.search} },
-//                 { "therapeutic_area": {$regex:req.params.search} }
-//             ]
-//         }
-//         .then((result) => {
-//             res.status(200).send(result);
-//         }).catch((err) => {
-//             res.status(500).send(err);
-//         })
-//     )
-// });
 
 // router.get('/pagination/:pageIndex/:pageSize', async(req, res) => {
 //     let pageIndex = +req.params.pageIndex || 0;
@@ -262,6 +223,18 @@ router.get('/uspatents', async(req, res) => {
     }
 });
 
+router.get('/sort/uspatents', async(req, res) => {
+    try{
+        const uspatentsort = await uspatents.find().sort({ publication_date: -1 }).exec();
+        res.status(201).send(uspatentsort);
+    } catch (err) {
+        res.status(500).json({
+            error: err,
+            message: "US Patent Failed to Load"
+        })
+    }
+});
+
 router.get('/cbuspatents', async(req, res) => {
         try {
             cbuspatents.find({}, (err, result) => {
@@ -269,6 +242,18 @@ router.get('/cbuspatents', async(req, res) => {
         })
     } catch (err){
         res.status(500).send(err);
+    }
+});
+
+router.get('/sort/cbuspatents', async(req, res) => {
+    try{
+        const cbuspatentsort = await cbuspatents.find().sort({ publication_date: -1 }).exec();
+        res.status(201).send(cbuspatentsort);
+    } catch (err) {
+        res.status(500).json({
+            error: err,
+            message: "US Patent Failed to Load"
+        })
     }
 });
 
