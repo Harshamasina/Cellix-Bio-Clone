@@ -79,25 +79,26 @@ function InventorYears(){
             count: 3
         }
     ]
+    
     return(
         <>
-                <div className="YearsContainerh2">
-                    <h2 className="Yearsh2">Mahesh Kandula's World Wide Patents (2022 to 2009)</h2>
-                </div>
-                
-                <div className='yearscontainer'>
-                    {
-                        data.map((item) => {
-                            return(
-                                <div className="YearsButtonContainer" key={item.id}>
-                                    <Button className='yearbtn' variant="dark" size="lg">
-                                        <Link className='YearsLinks' to={`/PatentsDashboard/${item.year}`}>{item.year}<p className='yearp'>Patents: {item.count}</p></Link>
-                                    </Button>
-                                </div>
-                            );
-                        })
-                    }
-                </div>
+            <div className="YearsContainerh2">
+                <h2 className="Yearsh2">Mahesh Kandula's World Wide Patents (2022 to 2009)</h2>
+            </div>
+            
+            <div className='yearscontainer'>
+                {
+                    data.map((item) => {
+                        return(
+                            <div className="YearsButtonContainer" key={item.id}>
+                                <Button className='yearbtn' variant="dark" size="lg">
+                                    <Link className='YearsLinks' to={`/PatentsDashboard/${item.year}`}>{item.year}<p className='yearp'>Patents: {item.count}</p></Link>
+                                </Button>
+                            </div>
+                        );
+                    })
+                }
+            </div>
         </>
     );
 }
